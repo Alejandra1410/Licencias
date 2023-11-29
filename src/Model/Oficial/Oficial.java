@@ -7,12 +7,13 @@ import Model.Persona;
 import java.sql.Date;
 public class Oficial extends Persona {
 
-    public Oficial(double salario, String contrasena, String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        super(id, nombre, fechaNacimiento, telefono, correo);
+    public Oficial(double salario, String contrasena, int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(id, cedula, nombre, fechaNacimiento, telefono, correo);
         this.salario = salario;
         this.contrasena = contrasena;
     }
 
+   
     private double salario;
     private String contrasena;
 
@@ -50,6 +51,17 @@ public class Oficial extends Persona {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }   
+     public boolean cambiarContrasena(String contrasenaActual, String nuevaContrasena) {
+        if (this.contrasena.equals(contrasenaActual)) {
+            this.contrasena = nuevaContrasena;
+            return true; 
+        }
+        return false; 
+    }
+
+    public boolean autenticar(String contrasena) {
+        return this.contrasena.equals(contrasena);
     }
 
 }

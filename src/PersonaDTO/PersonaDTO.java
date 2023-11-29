@@ -12,13 +12,15 @@ import java.sql.Date;
  */
 public abstract class PersonaDTO {
     private int id; 
+    private String cedula;
     private String nombre;
     private Date fechaNacimiento;
     private String telefono;
     private String correo;
 
-    public PersonaDTO(int id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        this.id = 0;
+    public PersonaDTO(int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        this.id = id;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
@@ -44,7 +46,9 @@ public abstract class PersonaDTO {
     public String getCorreo() {
         return correo;
     }
-
+  public String getCedula(){
+      return cedula;
+  }
 
 
 }

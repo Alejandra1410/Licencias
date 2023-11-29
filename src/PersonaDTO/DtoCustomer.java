@@ -12,8 +12,10 @@ public class DtoCustomer extends PersonaDTO{
     private boolean active;
     private boolean desactive;
 
-    public DtoCustomer(int id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        super(id, nombre, fechaNacimiento, telefono, correo);
+    public DtoCustomer(boolean active, boolean desactive, int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(id, cedula, nombre, fechaNacimiento, telefono, correo);
+        this.active = active;
+        this.desactive = desactive;
     }
 
     public boolean isActive() {

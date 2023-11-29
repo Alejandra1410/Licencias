@@ -3,6 +3,7 @@ import java.sql.Date;
 
 public abstract class Persona {
     private int id; 
+    private String cedula;
     private String nombre;
     private Date fechaNacimiento;
     private String telefono;
@@ -11,13 +12,16 @@ public abstract class Persona {
     public Persona() {
     }
 
-    public Persona(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        this.id = 0;
+    public Persona(int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        this.id = id;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
         this.correo = correo;
     }
+
+    
 
     public int getId() {
         return id;
@@ -37,6 +41,9 @@ public abstract class Persona {
 
     public String getCorreo() {
         return correo;
+    }
+    public String getCedula(){
+        return cedula;
     }
 
     public void setNombre(String nombre) {
