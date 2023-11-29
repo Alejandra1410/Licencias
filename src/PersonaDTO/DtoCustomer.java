@@ -7,33 +7,13 @@ import java.sql.Date;
  *
  * @author abiga
  */
-public class DtoCustomer {
-    private String identification;
-    private String Name;
-    private Date dateOfBirth;
-    private int telephone;
-    private String email;
+public class DtoCustomer extends PersonaDTO{
+    
     private boolean active;
     private boolean desactive;
 
-    public String getIdentification() {
-        return identification;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public int getTelephone() {
-        return telephone;
-    }
-
-    public String getEmail() {
-        return email;
+    public DtoCustomer(int id, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(id, nombre, fechaNacimiento, telefono, correo);
     }
 
     public boolean isActive() {

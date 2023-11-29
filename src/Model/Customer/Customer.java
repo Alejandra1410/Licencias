@@ -1,5 +1,6 @@
 package Model.Customer;
 
+import Model.Persona;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -10,28 +11,13 @@ import java.sql.Date;
  *
  * @author abiga
  */
-public class Customer {
-    private String identification;
-    private String Name;
-    private Date dateOfBirth;
-    private int telephone;
-    private String email;
+public class Customer extends Persona {
+   
     private boolean active;
     private boolean desactive;
 
-    public Customer(String identification, String Name, Date dateofBirth, int telephone, String email) {
-        this.identification = identification;
-        this.Name = Name;
-        this.dateOfBirth = dateofBirth;
-        this.telephone = telephone;
-        this.email = email;
-    }
-    
-
-    public Customer(String identification, String Name, Date dateofBirth) {
-        this.identification = identification;
-        this.Name = Name;
-        this.dateOfBirth = dateofBirth;
+    public Customer(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(id, nombre, fechaNacimiento, telefono, correo);
     }
 
     public boolean isActive() {
@@ -50,54 +36,22 @@ public class Customer {
         this.desactive = desactive;
     }
     
-    public String getIdentification() {
-        return identification;
+    private int calculateAge() {
+        return Period.between(
+                this.getFechaNacimiento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                LocalDate.now()
+        ).getYears();
     }
 
-    public String getName() {
-        return Name;
+    public int getAge() {
+        return calculateAge();
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
-    public Date getDateofBirth() {
-        return dateOfBirth;
-    }
-
-    public int getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(int telephone) {
-        this.telephone = telephone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-   private int calculateAge() {
-    return Period.between(
-            this.dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-            LocalDate.now()
-    ).getYears();
-}
-
-
-    public int getAge(){
-         return calculateAge();
-   }
-     public String getDateOfBirthAsString() {
+    public String getDateOfBirthAsString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(dateOfBirth);
+        return dateFormat.format(getFechaNacimiento());
     }
 }
-    
 
 
 

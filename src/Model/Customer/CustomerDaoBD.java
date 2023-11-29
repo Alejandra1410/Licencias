@@ -1,7 +1,10 @@
-package Dao.Customer;
+package Model.Customer;
 
 
+import Dao.Dao;
+import DaoBD.DaoBD;
 import PersonaDTO.DtoCustomer;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +17,11 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         }
         DaoBD bd = new DaoBD();
         bd.createStatement("call CustomerInsert(?,?,?)"); // Reemplaza "CustomerInsert()" con tu procedimiento almacenado real
-        bd.set(1, customer.getIdentification());
-        bd.set(2, customer.getName());
-        bd.set(3, customer.getEmail());
+        bd.set(1, customer.getId());
+        bd.set(2, customer.getNombre());
+        bd.set(3, customer.getFechaNacimiento());
+        bd.set(4, customer.getTelefono());
+        bd.set(5, customer.getCorreo());
         return bd.execute(false);
     }
 
@@ -29,9 +34,11 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             try {
                 if (bd.getData().next()) {
                     DtoCustomer customer = new DtoCustomer(
-                            bd.getData().getString(1),
+                            bd.getData().getInt(1),
                             bd.getData().getString(2),
-                            bd.getData().getString(3)
+                            bd.getData().getDate(3),
+                            bd.getData().getString(4),
+                            bd.getData().getString(5)
                     );
                     return customer;
                 } else {
@@ -55,9 +62,11 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             if (bd.execute(true)) {
                 while (bd.getData().next()) {
                     DtoCustomer customer = new DtoCustomer(
-                            bd.getData().getString(1),
+                            bd.getData().getInt(1),
                             bd.getData().getString(2),
-                            bd.getData().getString(3)
+                            bd.getData().getDate(3),
+                            bd.getData().getString(4),
+                            bd.getData().getString(5)
                     );
                     customerList.add(customer);
                 }
@@ -71,27 +80,31 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
 
     @Override
     public boolean update(DtoCustomer customer) {
-        if (customer == null || customer.getIdentification() == null || customer.getIdentification().isEmpty()) {
-            return false;
-        }
-
-        DaoBD bd = new DaoBD();
-        bd.createStatement("call CustomerUpdate(?,?,?)"); // Reemplaza "CustomerUpdate()" con tu procedimiento almacenado real
-        bd.set(1, customer.getIdentification());
-        bd.set(2, customer.getName());
-        bd.set(3, customer.getEmail());
-        return bd.execute(true);
+//        if (customer == null || customer.getId() == null || customer.getId().isEmpty()) {
+//            return false;
+//        }
+//
+//        DaoBD bd = new DaoBD();
+//        bd.createStatement("call CustomerUpdate(?,?,?)"); // Reemplaza "CustomerUpdate()" con tu procedimiento almacenado real
+//        bd.set(1, customer.getId());
+//        bd.set(2, customer.getNombre()); //RevisarESTA MALO NO SE TIENE QUE PODER ACTUALIZAR ESTOS VALORES SOLO TELEFONO, CORREO
+//        bd.set(3, customer.getCorreo());
+//        return bd.execute(true);
+        return false;
+//        
     }
 
     @Override
     public boolean delete(DtoCustomer customer) {
-        if (customer == null || customer.getIdentification() == null || customer.getIdentification().isEmpty()) {
-            return false;
-        }
-
-        DaoBD bd = new DaoBD();
-        bd.createStatement("call CustomerDelete(?)"); // Reemplaza "CustomerDelete()" con tu procedimiento almacenado real
-        bd.set(1, customer.getIdentification());
-        return bd.execute(true);
+//       if (customer == null || customer.getId()== null || customer.getId().isEmpty()) {
+//            return false;
+//        }
+//
+//        DaoBD bd = new DaoBD();
+//        bd.createStatement("call CustomerDelete(?)"); // Reemplaza "CustomerDelete()" con tu procedimiento almacenado real
+//        bd.set(1, customer.GER);
+//        return bd.execute(true);
+        return false;
+       
     }
 }
