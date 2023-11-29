@@ -4,12 +4,13 @@
  */
 package View;
 
-/**
- *
- * @author ekard
+/*
+ * @author wendy
  */
-public interface View <Class> {    //NO TODO ES OBLIGATORIOOO
+public interface View <Class> {
     public void display(Class obj);
+    public void displayErrorMessage(String message);
     public void displayMessage(String message);
+    public boolean displayConfirmMessage(String message);
     
 }
