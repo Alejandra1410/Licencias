@@ -5,15 +5,12 @@
 package Controller.Citas;
 
 
+import Controller.Controller;
 import Model.Citas.Cita;
 import Model.Citas.CitaDTO;
 import Model.Citas.CitaDaoBD;
-import View.FrmCitas;
-import View.View;
-import java.util.ArrayList;
-import java.util.Date;
+import View.Interface.FrmCitas;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
