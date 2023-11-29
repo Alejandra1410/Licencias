@@ -5,9 +5,9 @@
 package Controller.Citas;
 
 
-import Model.Cita;
-import Model.CitaDTO;
-import Model.CitaDaoBD;
+import Model.Citas.Cita;
+import Model.Citas.CitaDTO;
+import Model.Citas.CitaDaoBD;
 import View.FrmCitas;
 import View.View;
 import java.util.ArrayList;

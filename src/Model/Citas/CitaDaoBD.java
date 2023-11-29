@@ -1,10 +1,9 @@
 package Model.Citas;
 
 import Dao.Dao;
-import Dao.DaoBD.DaoBD;
+import DaoBD.DaoBD;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class CitaDaoBD implements Dao<CitaDTO> {
