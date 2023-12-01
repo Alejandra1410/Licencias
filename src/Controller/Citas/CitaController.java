@@ -6,9 +6,11 @@ package Controller.Citas;
 
 
 import Controller.Controller;
+import Controller.Customer.CustomerController;
 import Model.Citas.Cita;
 import Model.Citas.CitaDTO;
 import Model.Citas.CitaDaoBD;
+import Model.Customer.Customer;
 import View.Interface.FrmCitas;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import java.util.List;
 public class CitaController implements Controller<Cita> {
 
     private FrmCitas view;
+    private CustomerController customercontroller;
 
     public CitaController(FrmCitas view) {
         this.view = view;
@@ -83,5 +86,7 @@ public class CitaController implements Controller<Cita> {
     public boolean delete(Cita obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
            
 }

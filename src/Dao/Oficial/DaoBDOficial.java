@@ -36,7 +36,7 @@ public class DaoBDOficial implements Dao<DtoOficial>{
     }
     @Override
     public DtoOficial read(String id) {
-        List<DtoOficial> oficial = new ArrayList<>();
+        List<DtoOficial> oficiales = new ArrayList<>();
         DaoBD bd = new DaoBD();
         try {
             bd.createStatement("call SelectAll()");
@@ -48,14 +48,14 @@ public class DaoBDOficial implements Dao<DtoOficial>{
                     String telefono = bd.getData().getString(4);
                     String correo = bd.getData().getString(5);
                     String contrasena = bd.getData().getString(6);
-                    oficial.add(new DtoOficial());
+                    oficiales.add(new DtoOficial());
                 }
             }
         } catch (SQLException e) {
             System.out.println("Error readAll");
         }
 
-        return 
+        return oficiales
     }
 
     @Override

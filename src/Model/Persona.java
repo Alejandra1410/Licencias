@@ -12,7 +12,6 @@ public abstract class Persona {
     }
 
     public Persona(String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
-       
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -20,7 +19,6 @@ public abstract class Persona {
         this.correo = correo;
     }
 
- 
     public String getNombre() {
         return nombre;
     }
@@ -36,9 +34,7 @@ public abstract class Persona {
     public String getCorreo() {
         return correo;
     }
-    public String getCedula(){
-        return cedula;
-    }
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -52,4 +48,9 @@ public abstract class Persona {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String getCedula() {
+        return cedula;
+    }
+    
 }

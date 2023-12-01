@@ -41,9 +41,11 @@ public abstract class PersonaDTO {
     public String getCorreo() {
         return correo;
     }
-  public String getCedula(){
-      return cedula;
-  }
 
-
+    public String getCedula() {
+        return cedula;
+    }
+    
+   
+    
 }

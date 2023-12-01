@@ -121,7 +121,7 @@ public class FrmLicencias extends javax.swing.JFrame {
     private javax.swing.JMenu btnCitas;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JDesktopPane jpane;
+    public static javax.swing.JDesktopPane jpane;
     // End of variables declaration//GEN-END:variables
 
 

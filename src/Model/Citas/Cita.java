@@ -4,6 +4,7 @@
  */
 package Model.Citas;
 
+import Model.Customer.Customer;
 import java.sql.Date;
 /**
  *
@@ -14,14 +15,15 @@ public class Cita {
     private int id;
     private Date fecha;
     private String hora;
-    //private Cliente cliente;
+    private Customer customer;
 
-//    public Cita(int id, String fecha, String hora, Cliente cliente) {
-//        this.id = id;
-//        this.fecha = fecha;
-//        this.hora = hora;
-//        this.cliente = cliente;
-//    }
+    public Cita(int id, Date fecha, String hora, Customer customer) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.customer = customer;
+    }
+
 
     public Cita(int id, Date fecha, String hora) { //Este constructor es para probar crud
         this.id = id;
@@ -55,20 +57,20 @@ public class Cita {
     public void setHora(String hora) {
         this.hora = hora;
     }
-    //NECESITO CLASE CLIENTE
-//    public Cliente getCliente() {
-//        return cliente;
-//    }
-//
-//    public void setCliente(Cliente cliente) {
-//        this.cliente = cliente;
-//    }
 
-    @Override //Falta Cliente
-    public String toString() {
-        return "Cita{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + '}';
+    public Customer getCustomer() {
+        return customer;
     }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", customer=" + customer + '}';
+    }
+  
    
 }
 

@@ -17,10 +17,10 @@ public class CitaDaoBD implements Dao<CitaDTO> {
    @Override
    public boolean create(CitaDTO citaDTO) {
 
-    daoBD.createStatement("call CitasInsert(null,?,?)");
+    daoBD.createStatement("call CitasInsert(null,?,?,?)");
     daoBD.set(1, citaDTO.getFecha());
     daoBD.set(2, citaDTO.getHora());
-    //daoBD.set(3, citaDTO.getCliente().getId()); // Asegúrate de que el cliente esté configurado correctamente
+    daoBD.set(3, citaDTO.getDtoCustomer().getId()); // Asegúrate de que el cliente esté configurado correctamente
 
     return daoBD.execute(true);
 }

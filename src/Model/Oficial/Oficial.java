@@ -6,6 +6,8 @@ package Model.Oficial;
 import Model.Persona;
 import java.sql.Date;
 public class Oficial extends Persona {
+     private double salario;
+    private String contrasena;
 
     public Oficial(double salario, String contrasena,String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
         super(cedula, nombre, fechaNacimiento, telefono, correo);
@@ -13,11 +15,7 @@ public class Oficial extends Persona {
         this.contrasena = contrasena;
     }
 
-   
-    private double salario;
-    private String contrasena;
-
- 
+  
     public double deducciones() {
         double deduccionesSeguridadSocial = salario * (5.5 + 3.84 + 1 + 3.3) / 100;
         double impuestoRenta = impuestoSobreRenta();

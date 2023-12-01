@@ -16,8 +16,13 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             return false;
         }
         DaoBD bd = new DaoBD();
+<<<<<<< HEAD
         bd.createStatement("call CustomerInsert(?,?,?)"); // Reemplaza "CustomerInsert
         //Pendiente perro caliente que el orden de las tablas cambian.
+=======
+        bd.createStatement("call CustomerInsert(?,?,?,?,?)"); // Reemplaza "CustomerInsert()" con tu procedimiento almacenado real
+        bd.set(1, customer.getId());
+>>>>>>> aa5f0a648fa273d56eac30ab77e91d19b9256b00
         bd.set(2, customer.getNombre());
         bd.set(3, customer.getFechaNacimiento());
         bd.set(4, customer.getTelefono());
@@ -34,7 +39,11 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             try {
                 if (bd.getData().next()) {
                     DtoCustomer customer = new DtoCustomer(
+<<<<<<< HEAD
                            // Cambiar  bd.getData().getInt(1),
+=======
+                            bd.getData().getString(1),
+>>>>>>> aa5f0a648fa273d56eac30ab77e91d19b9256b00
                             bd.getData().getString(2),
                             bd.getData().getDate(3),
                             bd.getData().getString(4),
@@ -61,8 +70,13 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         try {
             if (bd.execute(true)) {
                 while (bd.getData().next()) {
+<<<<<<< HEAD
               // CAMBIAR      DtoCustomer customer = new DtoCustomer(
                             bd.getData().getInt(1),
+=======
+                      DtoCustomer customer = new DtoCustomer(
+                            bd.getData().getString(1),
+>>>>>>> aa5f0a648fa273d56eac30ab77e91d19b9256b00
                             bd.getData().getString(2),
                             bd.getData().getDate(3),
                             bd.getData().getString(4),
@@ -107,4 +121,5 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         return false;
        
     }
+
 }

@@ -108,7 +108,7 @@ public class OficialController implements Controller<Oficial> {
         DtoOficial oficialDto = new DtoOficial(
                 oficial.getSalario(),
                 oficial.getContrasena(),
-                oficial.getCedula(),
+           oficial.getCedula(),
                 oficial.getNombre(),
                 oficial.getFechaNacimiento(),
                 oficial.getTelefono(),
