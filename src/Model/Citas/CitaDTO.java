@@ -1,5 +1,6 @@
 package Model.Citas;
 
+import PersonaDTO.DtoCustomer;
 import java.sql.Date;
 
 /**
@@ -10,15 +11,17 @@ public class CitaDTO {
     private int id;
     private Date fecha;
     private String hora;
-//  private ClienteDTO cliente;
+    private DtoCustomer dtoCustomer;
 
-//    public CitaDTO(int id, Date fecha, Time hora, ClienteDTO cliente) {
-//        this.id = id;
-//        this.fecha = fecha;
-//        this.hora = hora;
-//        this.cliente = cliente;
-//    }
-//    
+    public CitaDTO(int id, Date fecha, String hora, DtoCustomer dtoCustomer) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.dtoCustomer = dtoCustomer;
+    }
+
+
+   
     
     
     public CitaDTO(int id, Date fecha, String hora) {
@@ -53,8 +56,18 @@ public class CitaDTO {
         this.hora = hora;
     }
 
+    public DtoCustomer getDtoCustomer() {
+        return dtoCustomer;
+    }
+
+    public void setDtoCustomer(DtoCustomer dtoCustomer) {
+        this.dtoCustomer = dtoCustomer;
+    }
+
     @Override
     public String toString() {
-        return "CitaDTO{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + '}';
+        return "CitaDTO{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", dtoCustomer=" + dtoCustomer + '}';
     }
+
+   
 }

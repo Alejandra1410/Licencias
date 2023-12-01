@@ -16,7 +16,7 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             return false;
         }
         DaoBD bd = new DaoBD();
-        bd.createStatement("call CustomerInsert(?,?,?)"); // Reemplaza "CustomerInsert()" con tu procedimiento almacenado real
+        bd.createStatement("call CustomerInsert(?,?,?,?,?)"); // Reemplaza "CustomerInsert()" con tu procedimiento almacenado real
         bd.set(1, customer.getId());
         bd.set(2, customer.getNombre());
         bd.set(3, customer.getFechaNacimiento());
@@ -34,7 +34,7 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             try {
                 if (bd.getData().next()) {
                     DtoCustomer customer = new DtoCustomer(
-                            bd.getData().getInt(1),
+                            bd.getData().getString(1),
                             bd.getData().getString(2),
                             bd.getData().getDate(3),
                             bd.getData().getString(4),
@@ -61,8 +61,8 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         try {
             if (bd.execute(true)) {
                 while (bd.getData().next()) {
-                    DtoCustomer customer = new DtoCustomer(
-                            bd.getData().getInt(1),
+                      DtoCustomer customer = new DtoCustomer(
+                            bd.getData().getString(1),
                             bd.getData().getString(2),
                             bd.getData().getDate(3),
                             bd.getData().getString(4),
@@ -107,4 +107,5 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         return false;
        
     }
+
 }

@@ -12,13 +12,15 @@ import java.sql.Date;
  * @author abiga
  */
 public class Customer extends Persona {
-   
     private boolean active;
     private boolean desactive;
+
+    
 
     public Customer(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
         super(id, nombre, fechaNacimiento, telefono, correo);
     }
+    
 
     public boolean isActive() {
         return active;
@@ -51,6 +53,8 @@ public class Customer extends Persona {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(getFechaNacimiento());
     }
+
+   
 }
 
 

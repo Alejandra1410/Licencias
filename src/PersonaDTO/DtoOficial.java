@@ -10,7 +10,7 @@ public class DtoOficial extends PersonaDTO {
     private double salario;
     private String contrasena;
 
-    public DtoOficial(double salario, String contrasena, int id, String nombre, Date fechaNacimiento, String telefono, String correo) {
+    public DtoOficial(double salario, String contrasena, String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
         super(id, nombre, fechaNacimiento, telefono, correo);
         this.salario = salario;
         this.contrasena = contrasena;
