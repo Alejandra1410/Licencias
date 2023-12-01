@@ -2,7 +2,6 @@ package Model;
 import java.sql.Date;
 
 public abstract class Persona {
-    private int id; 
     private String cedula;
     private String nombre;
     private Date fechaNacimiento;
@@ -12,8 +11,8 @@ public abstract class Persona {
     public Persona() {
     }
 
-    public Persona(int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        this.id = id;
+    public Persona(String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+       
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -21,12 +20,7 @@ public abstract class Persona {
         this.correo = correo;
     }
 
-    
-
-    public int getId() {
-        return id;
-    }
-
+ 
     public String getNombre() {
         return nombre;
     }

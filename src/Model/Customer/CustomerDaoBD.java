@@ -16,8 +16,8 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             return false;
         }
         DaoBD bd = new DaoBD();
-        bd.createStatement("call CustomerInsert(?,?,?)"); // Reemplaza "CustomerInsert()" con tu procedimiento almacenado real
-        bd.set(1, customer.getId());
+        bd.createStatement("call CustomerInsert(?,?,?)"); // Reemplaza "CustomerInsert
+        //Pendiente perro caliente que el orden de las tablas cambian.
         bd.set(2, customer.getNombre());
         bd.set(3, customer.getFechaNacimiento());
         bd.set(4, customer.getTelefono());
@@ -34,7 +34,7 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
             try {
                 if (bd.getData().next()) {
                     DtoCustomer customer = new DtoCustomer(
-                            bd.getData().getInt(1),
+                           // Cambiar  bd.getData().getInt(1),
                             bd.getData().getString(2),
                             bd.getData().getDate(3),
                             bd.getData().getString(4),
@@ -61,7 +61,7 @@ public class CustomerDaoBD implements Dao<DtoCustomer> {
         try {
             if (bd.execute(true)) {
                 while (bd.getData().next()) {
-                    DtoCustomer customer = new DtoCustomer(
+              // CAMBIAR      DtoCustomer customer = new DtoCustomer(
                             bd.getData().getInt(1),
                             bd.getData().getString(2),
                             bd.getData().getDate(3),

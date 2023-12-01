@@ -25,7 +25,6 @@ public class OficialController implements Controller<Oficial> {
             DtoOficial oficialDto = new DtoOficial(
                     oficial.getSalario(),
                     oficial.getContrasena(),
-                    oficial.getId(),
                     oficial.getCedula(),
                     oficial.getNombre(),
                     oficial.getFechaNacimiento(),
@@ -56,7 +55,6 @@ public class OficialController implements Controller<Oficial> {
         Oficial oficial = new Oficial(
                 oficialDto.getSalario(),
                 oficialDto.getContrasena(),
-                oficialDto.getId(),
                 oficialDto.getCedula(),
                 oficialDto.getNombre(),
                 oficialDto.getFechaNacimiento(),
@@ -75,7 +73,6 @@ public class OficialController implements Controller<Oficial> {
             officials.add(new Oficial(
                     dto.getSalario(),
                     dto.getContrasena(),
-                    dto.getId(),
                     dto.getCedula(),
                     dto.getNombre(),
                     dto.getFechaNacimiento(),
@@ -91,7 +88,6 @@ public class OficialController implements Controller<Oficial> {
         DtoOficial oficialDto = new DtoOficial(
                 oficial.getSalario(),
                 oficial.getContrasena(),
-                oficial.getId(),
                 oficial.getCedula(),
                 oficial.getNombre(),
                 oficial.getFechaNacimiento(),
@@ -112,7 +108,6 @@ public class OficialController implements Controller<Oficial> {
         DtoOficial oficialDto = new DtoOficial(
                 oficial.getSalario(),
                 oficial.getContrasena(),
-                oficial.getId(),
                 oficial.getCedula(),
                 oficial.getNombre(),
                 oficial.getFechaNacimiento(),
@@ -146,7 +141,6 @@ public class OficialController implements Controller<Oficial> {
             DtoOficial oficialDtoNuevo = new DtoOficial(
                     oficialDtoActual.getSalario(),
                     nuevaContrasena, // Nueva contraseña
-                    oficialDtoActual.getId(),
                     oficialDtoActual.getCedula(),
                     oficialDtoActual.getNombre(),
                     oficialDtoActual.getFechaNacimiento(),

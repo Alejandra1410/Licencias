@@ -7,8 +7,8 @@ import Model.Persona;
 import java.sql.Date;
 public class Oficial extends Persona {
 
-    public Oficial(double salario, String contrasena, int id, String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        super(id, cedula, nombre, fechaNacimiento, telefono, correo);
+    public Oficial(double salario, String contrasena,String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(cedula, nombre, fechaNacimiento, telefono, correo);
         this.salario = salario;
         this.contrasena = contrasena;
     }

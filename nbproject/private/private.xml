@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/CustomerDaoBD.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/Customer.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Persona.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Oficial/Oficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/PersonaDTO.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/PruebaOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Dao.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/DtoOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/DaoBDOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/DaoBD/DaoBD.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Controller/Oficial/OficialController.java</file>
+        </group>
+    </open-files>
 </project-private>
