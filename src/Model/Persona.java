@@ -2,6 +2,7 @@ package Model;
 import java.sql.Date;
 
 public abstract class Persona {
+    
     private String id; 
     private String nombre;
     private Date fechaNacimiento;
@@ -19,9 +20,6 @@ public abstract class Persona {
         this.correo = correo;
     }
 
-    public String getId() {
-        return id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -38,6 +36,11 @@ public abstract class Persona {
     public String getCorreo() {
         return correo;
     }
+
+    public String getId() {
+        return id;
+    }
+   
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

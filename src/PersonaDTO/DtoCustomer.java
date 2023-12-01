@@ -12,9 +12,21 @@ public class DtoCustomer extends PersonaDTO{
     private boolean desactive;
     private int edad;
 
-    public DtoCustomer( String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
+    public DtoCustomer(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
         super(id, nombre, fechaNacimiento, telefono, correo);
+        
     }
+
+    public DtoCustomer( String id,  String nombre, Date fechaNacimiento,int edad, String telefono, String correo) {
+        super(id,  nombre, fechaNacimiento, telefono, correo);
+        this.edad = edad;
+    }
+
+    
+    
+    
+
+
     
 
     public int getEdad() {

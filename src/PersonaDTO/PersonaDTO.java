@@ -11,7 +11,7 @@ import java.sql.Date;
  * @author wendy
  */
 public abstract class PersonaDTO {
-    private String id; 
+    private String id;
     private String nombre;
     private Date fechaNacimiento;
     private String telefono;
@@ -24,6 +24,8 @@ public abstract class PersonaDTO {
         this.telefono = telefono;
         this.correo = correo;
     }
+
+    
 
     public String getId() {
         return id;
@@ -44,7 +46,7 @@ public abstract class PersonaDTO {
     public String getCorreo() {
         return correo;
     }
-
+    
 
 
 }
