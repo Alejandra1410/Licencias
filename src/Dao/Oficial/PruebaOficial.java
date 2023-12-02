@@ -4,6 +4,7 @@
  */
 package Dao.Oficial;
 
+import Model.Oficial.Oficial;
 import PersonaDTO.DtoOficial;
 
 /**
@@ -12,35 +13,18 @@ import PersonaDTO.DtoOficial;
  */
 public class PruebaOficial {
 
-    /**
-     * @param args the command line arguments
-     */
+    private Oficial oficial;
     public static void main(String[] args) {
-     
-          // Supongamos que tienes estos datos
-        double salario = 50000.0; // Ejemplo de salario
-        String contrasena = "hashDeLaContrasena";
-        String cedula = "123456789";
+
+
+        double salario = 50000.0;
+        String contrasenaPlana = "Hola,Hola";
+        String cedula = "2018";
         String nombre = "Juan Perez";
         java.sql.Date fechaNacimiento = java.sql.Date.valueOf("1990-01-01");
         String telefono = "1234567890";
         String correo = "juan@example.com";
-
-        // Crear un objeto DtoOficial con salario
-        DtoOficial oficial = new DtoOficial(salario,contrasena, cedula, nombre, fechaNacimiento, telefono, correo);
-
-        // Resto del código para interactuar con DaoBDOficial
-    
-        // Crear una instancia de DaoBDOficial y llamar al método create
-        DaoBDOficial daoOficial = new DaoBDOficial();
-        boolean result = daoOficial.create(oficial);
-
-        // Mostrar el resultado de la operación
-        if (result) {
-            System.out.println("Oficial creado exitosamente.");
-        } else {
-            System.out.println("Error al crear el oficial.");
-        }
+        // Crear una instancia de Oficial para usar su método de encriptación
     }
 }
     

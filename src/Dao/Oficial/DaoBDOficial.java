@@ -16,26 +16,45 @@ import java.util.List;
  *
  * @author wendy
  */
-public class DaoBDOficial implements Dao<DtoOficial>{
-
+public class DaoBDOficial implements Dao<DtoOficial> {
+    
     @Override
     public boolean create(DtoOficial obj) {
         if (obj == null) {
             return false;
         }
         DaoBD bd = new DaoBD();
-     bd.createStatement("call OficialInsert(?,?,?,?,?,?)"); // Nombre del procedimiento almacenado
+        bd.createStatement("call OficialInsert(?,?,?,?,?,?)"); // Nombre del procedimiento almacenado
         bd.set(1, obj.getCedula());
         bd.set(2, obj.getNombre());
         bd.set(3, obj.getFechaNacimiento());
         bd.set(4, obj.getTelefono());
         bd.set(5, obj.getCorreo());
-        bd.set(6, obj.getContrasena()); // Asegúrate de que OficialDTO tiene este método
-
         return bd.execute(false);
     }
+
     @Override
     public DtoOficial read(String id) {
+        DaoBD bd = new DaoBD();
+        bd.createStatement("call OficialRead(?)");
+        bd.set(1, id);
+        if (bd.execute(true)) {
+            try {
+                if (bd.getData().next()) {
+                    DtoOficial user = new DtoOficial(0.0, bd.getData().getString(1), bd.getData().getString(2), bd.getData().getDate(3), bd.getData().getString(4), bd.getData().getString(5));
+                    return user;
+                } else {
+                    return null;
+                }
+            } catch (SQLException ex) {
+                
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public List<DtoOficial> readAll() {
         List<DtoOficial> oficiales = new ArrayList<>();
         DaoBD bd = new DaoBD();
         try {
@@ -47,45 +66,39 @@ public class DaoBDOficial implements Dao<DtoOficial>{
                     Date fechaNacimiento = bd.getData().getDate(3);
                     String telefono = bd.getData().getString(4);
                     String correo = bd.getData().getString(5);
-                    String contrasena = bd.getData().getString(6);
-                    oficiales.add(new DtoOficial());
+                    double salario = 1226000; // Debe hacerse esto porque sino estalla por el salario
+                    oficiales.add(new DtoOficial(salario, cedula, nombre, fechaNacimiento, telefono, correo));
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Error readAll");
+            System.out.println("Error readAll: " + e.getMessage());
         }
-
-        return oficiales
+        
+        return oficiales;
     }
-
-    @Override
-    public List<DtoOficial> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     @Override
     public boolean update(DtoOficial obj) {
-          if (obj == null) {
+        if (obj == null) {
             return false;
         }
         DaoBD bd = new DaoBD();
-     bd.createStatement("call OficialUpdate(?,?,?,?,?,?)"); 
+        bd.createStatement("call OficialUpdate(?,?,?,?,?,?)");        
         bd.set(1, obj.getCedula());
         bd.set(2, obj.getNombre());
         bd.set(3, obj.getFechaNacimiento());
         bd.set(4, obj.getTelefono());
         bd.set(5, obj.getCorreo());
-        bd.set(6, obj.getContrasena()); 
         return bd.execute(false);
     }
-
+    
     @Override
     public boolean delete(DtoOficial obj) {
-        if (obj== null) {
+        if (obj == null) {
             return false;
         }
         DaoBD bd = new DaoBD();
-        bd.createStatement("call delete oficial(?)");
+        bd.createStatement("call deleteOficial(?)");
         bd.set(1, obj.getCedula());
         return bd.execute(false);
     }
