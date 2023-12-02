@@ -31,6 +31,7 @@ public class FrmLicencias extends javax.swing.JFrame {
         btnCitas = new javax.swing.JMenu();
         btnAgendar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnAgendarClientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +58,16 @@ public class FrmLicencias extends javax.swing.JFrame {
 
         jMenuBar1.add(btnCitas);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Clientes");
+
+        btnAgendarClientes.setText("Agendar");
+        btnAgendarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendarClientesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnAgendarClientes);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -79,6 +89,10 @@ public class FrmLicencias extends javax.swing.JFrame {
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
         FrmCitas();
     }//GEN-LAST:event_btnAgendarActionPerformed
+
+    private void btnAgendarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarClientesActionPerformed
+        FrmClientes();
+    }//GEN-LAST:event_btnAgendarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,6 +132,7 @@ public class FrmLicencias extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAgendar;
+    private javax.swing.JMenuItem btnAgendarClientes;
     private javax.swing.JMenu btnCitas;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -128,6 +143,12 @@ public class FrmLicencias extends javax.swing.JFrame {
 
 private void FrmCitas(){
      FrmCitas frm = new FrmCitas();
+     this.jpane.add(frm);
+     frm.setVisible(true);
+     
+ }
+private void FrmClientes(){
+     FrmClientes frm = new FrmClientes();
      this.jpane.add(frm);
      frm.setVisible(true);
      

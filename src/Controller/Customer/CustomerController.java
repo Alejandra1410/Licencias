@@ -1,12 +1,10 @@
 package Controller.Customer;
 
 import Controller.Controller;
-import Model.Citas.CitaDTO;
 import Model.Customer.Customer;
 import Model.Customer.CustomerDaoBD;
 import PersonaDTO.DtoCustomer;
-import View.Interface.FrmCitas;
-import View.Interface.TablaClientes;
+import View.Interface.FrmClientes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,23 +13,37 @@ import java.util.List;
 
 public class CustomerController implements Controller<Customer> {
 
-    private FrmCitas view;
-    private TablaClientes viewC;
+   private FrmClientes viewC;
+    
 
-    public CustomerController(FrmCitas view) {
-        this.view = view;
+    public CustomerController(FrmClientes viewC) {
+        this.viewC = viewC;
     }
     
     @Override
-    public boolean create(Customer customer) {
+public boolean create(Customer customer) {
     CustomerDaoBD dao = new CustomerDaoBD();
-    DtoCustomer customerdto = new DtoCustomer(customer.getId(),customer.getNombre(),customer.getFechaNacimiento(),customer.getTelefono(),customer.getCorreo());
+
+    // Calcular la edad usando el método en el modelo Customer
+    int edad = customer.getEdad();
+
+    // Crear el DtoCustomer con la edad calculada
+    DtoCustomer customerdto = new DtoCustomer(
+        customer.getCedula(),
+        customer.getNombre(),
+        customer.getFechaNacimiento(),
+        edad,
+        customer.getTelefono(),
+        customer.getCorreo()
+    );
+
     boolean success = dao.create(customerdto);
 
     if (success) {
-        view.displayMessage("Cliente creado exitosamente.");
+        viewC.displayMessage("Cliente creado exitosamente.");
+        readAll();
     } else {
-        view.displayMessage("Error al crear el cliente. Por favor, inténtalo de nuevo.");
+        viewC.displayErrorMessage("No se pudo crear el cliente. Por favor, inténtalo de nuevo.");
     }
 
     return success;
@@ -40,27 +52,59 @@ public class CustomerController implements Controller<Customer> {
 
     @Override
     public Customer read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      
+        CustomerDaoBD dao = new CustomerDaoBD();
+        DtoCustomer Dto = dao.read(id);
+
+        if (Dto != null) {
+            Customer cust = new Customer(
+                    Dto.getCedula(),
+                    Dto.getNombre(),
+                    Dto.getFechaNacimiento(),
+                    Dto.getTelefono(),
+                    Dto.getCorreo()
+            );
+
+            viewC.display(cust);
+        } else {
+            viewC.displayErrorMessage("Cita no encontrada");
+        }
+       return null;
     }
 
   
     @Override
     public List<Customer> readAll() {
     CustomerDaoBD dao = new CustomerDaoBD();
-    List<Customer> List = new ArrayList<>();
-    List<DtoCustomer> userDTOs = dao.readAll();
-    for (DtoCustomer dto : userDTOs) {
-        Customer customer = new Customer(dto.getId(),dto.getNombre(),dto.getFechaNacimiento(),dto.getTelefono(),dto.getCorreo());
-        List.add(customer);
+    ArrayList<DtoCustomer> lista = dao.readAll();
+    if (lista != null) {
+            viewC.DisplayAll(lista);
     }
-
-    return List;
-       }
+       return null;
+    
+    }
  
 
     @Override
     public boolean update(Customer obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+          CustomerDaoBD dao = new CustomerDaoBD();
+          DtoCustomer dto = new DtoCustomer(
+                obj.getCedula(),
+                obj.getNombre(),
+                obj.getFechaNacimiento(),
+                obj.getTelefono(),
+                obj.getCorreo()
+        );
+
+        boolean exito = dao.update(dto);
+
+        if (exito) {
+            viewC.display(obj);
+            viewC.displayMessage("Cita modificada correctamente");
+        } else {
+            viewC.displayErrorMessage("Error al modificar la cita");
+        }
+       return false;
     }
 
     @Override

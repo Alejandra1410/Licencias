@@ -38,24 +38,6 @@ public class DaoBD {
         
     }
 
-//public void selectAll(String tableName) {
-//    String query = "SELECT * FROM " + tableName;
-//
-//    try {
-//        Statement statement = this.Connection.createStatement();
-//        ResultSet resultSet = statement.executeQuery(query);
-//
-//        while (resultSet.next()) {
-//            int columnCount = resultSet.getMetaData().getColumnCount();
-//            for (int i = 1; i <= columnCount; i++) {
-//                System.out.print(resultSet.getString(i) + " ");
-//            }
-//            System.out.println();
-//        }
-//    } catch (SQLException ex) {
-//        System.out.println("Error: " + ex.getMessage());
-//    }
-//}
     public void set(int index, Object param) {
         try {
             this.statement.setObject(index, param);
