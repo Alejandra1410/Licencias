@@ -4,7 +4,6 @@
  */
 package Model.Citas;
 
-import Model.Customer.Customer;
 import java.sql.Date;
 /**
  *
@@ -15,25 +14,41 @@ public class Cita {
     private int id;
     private Date fecha;
     private String hora;
-    private Customer customer;
+    private String Customer;
+    private boolean activa;
 
-    public Cita(int id, Date fecha, String hora, Customer customer) {
-        this.id = id;
+    public Cita( Date fecha, String hora, String Customer) {
+        this.id = 0;
         this.fecha = fecha;
         this.hora = hora;
-        this.customer = customer;
+        this.Customer = Customer;
     }
 
-
-    public Cita(int id, Date fecha, String hora) { //Este constructor es para probar crud
+    public Cita(int id, Date fecha, String hora, String Customer) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
+        this.Customer = Customer;
+    }
+
+    public Cita(int id, Date fecha, String hora, String Customer, boolean activa) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.Customer = Customer;
+        this.activa = activa;
     }
     
 
-    // Getter and Setter methods for id, fecha, hora, and cliente
+    public boolean isActiva() {
+        return activa;
+    }
 
+    public void setActiva(boolean activa) {
+        this.activa = activa;
+    }
+
+   
     public int getId() {
         return id;
     }
@@ -58,17 +73,15 @@ public class Cita {
         this.hora = hora;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomer() {
+        return Customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+    
 
     @Override
     public String toString() {
-        return "Cita{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", customer=" + customer + '}';
+        return "Cita{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", customer=" + Customer + '}';
     }
   
    

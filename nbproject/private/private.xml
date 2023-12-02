@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/CustomerDaoBD.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/Customer.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Persona.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Oficial/Oficial.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/PersonaDTO.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/PruebaOficial.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Dao.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/DtoOficial.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/DaoBDOficial.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/DaoBD/DaoBD.java</file>
-            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Controller/Oficial/OficialController.java</file>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/View/Interface/FrmLicencias.java</file>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/Model/Persona.java</file>
+            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/DaoBD/DaoBD.java</file>
         </group>
     </open-files>
-=======
-<<<<<<< HEAD
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-=======
->>>>>>> 8a5e9db8878764cca1b15010ca56aadcaaf78f6a
->>>>>>> aa5f0a648fa273d56eac30ab77e91d19b9256b00
 </project-private>

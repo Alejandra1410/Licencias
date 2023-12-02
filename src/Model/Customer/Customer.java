@@ -1,11 +1,9 @@
 package Model.Customer;
 
 import Model.Persona;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
-import java.sql.Date;
 
 /**
  *
@@ -14,13 +12,20 @@ import java.sql.Date;
 public class Customer extends Persona {
     private boolean active;
     private boolean desactive;
+    private int edad;
 
-    
-
-    public Customer(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        super(id, nombre, fechaNacimiento, telefono, correo);
+    public Customer(String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(cedula, nombre, fechaNacimiento, telefono, correo);
+        calcularEdad(fechaNacimiento.toLocalDate());
     }
-    
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
 
     public boolean isActive() {
         return active;
@@ -37,25 +42,10 @@ public class Customer extends Persona {
     public void setDesactive(boolean desactive) {
         this.desactive = desactive;
     }
-    
-    private int calculateAge() {
-        return Period.between(
-                this.getFechaNacimiento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                LocalDate.now()
-        ).getYears();
-    }
 
-    public int getAge() {
-        return calculateAge();
+    private void calcularEdad(LocalDate fechaNacimiento) {
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        this.edad = periodo.getYears();
     }
-
-    public String getDateOfBirthAsString() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return dateFormat.format(getFechaNacimiento());
-    }
-
-   
 }
-
-
-

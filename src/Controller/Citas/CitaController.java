@@ -12,6 +12,7 @@ import Model.Citas.CitaDTO;
 import Model.Citas.CitaDaoBD;
 import Model.Customer.Customer;
 import View.Interface.FrmCitas;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,55 +27,77 @@ public class CitaController implements Controller<Cita> {
     public CitaController(FrmCitas view) {
         this.view = view;
     }
+    
     @Override
-    public boolean create(Cita cita) {
+public boolean create(Cita cita) {
     CitaDaoBD dao = new CitaDaoBD();
 
-    // Validar si el cliente tiene más de una cita activa
-//    Cliente cliente = cita.getCliente(); // Asegúrate de que la clase Cita tenga un método getCliente()
-//    if (dao.conteoCitasClientes(cliente)) {
-//        view.displayMessage("Error: El cliente ya tiene una cita activa.");
-//        return false;
-//    }
+    if (!dao.isFechaCitaValida(cita.getFecha())) {
+        view.displayErrorMessage("Error: La fecha de la cita debe ser mayor a la fecha actual.");
+        return false;
+    }
 
-    // Validar si ya existen cuatro citas en la misma fecha y hora con clientes diferentes
-//    Date fecha = cita.getFecha();
-//    String hora = cita.getHora();
-//    if (dao.conteoDeCitas(fecha, hora)) {
-//        view.displayMessage("Error: Ya existen cuatro citas registradas en la misma fecha y hora.");
-//        return false;
-//    }
+    // Verificar reglas de negocio antes de crear la cita
+    if (dao.clienteTieneCita(cita.getCustomer())) {
+        view.displayErrorMessage("El cliente ya tiene una cita activa.");
+        return false; //FUNCIONA
+    }
+
+    if (dao.citasEnFechaYHora(cita.getFecha(), cita.getHora())) {
+        view.displayErrorMessage("Ya existen cuatro citas registradas en la misma fecha y hora.");
+        return false;
+    }
 
     // Convertir la Cita a CitaDTO para usar en el método create del Dao
-    CitaDTO citadto = new CitaDTO(cita.getId(), cita.getFecha(),cita.getHora());
+    CitaDTO dto = new CitaDTO(
+            cita.getFecha(),
+            cita.getHora(),
+            cita.getCustomer()
+    );
 
     // Llama al método correspondiente en tu Dao para agregar la cita
-    boolean success = dao.create(citadto);
+    boolean success = dao.create(dto);
 
     if (success) {
         view.displayMessage("Cita agregada exitosamente.");
+        readAll();
     } else {
-        view.displayMessage("Error al agregar la cita. Por favor, inténtalo de nuevo.");
+        view.displayErrorMessage("No se pudo agregar la cita. Por favor, inténtalo de nuevo.");
     }
 
     return success;
 }
 
-    @Override
-    public Cita read(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     @Override
-    public List<Cita> readAll() {
-//         CitaDaoBD dao = new CitaDaoBD();
-//            ArrayList<CitaDTO> lista = new ArrayList();
-//          if(lista!=null){
-//             view.mostrarTodo(lista);
-//    
-//    }
+    public Cita read(String id) {
+       CitaDaoBD dao = new CitaDaoBD();
+        CitaDTO citaDto = dao.read(id);
+
+        if (citaDto != null) {
+            Cita cita = new Cita(
+                    citaDto.getId(),
+                    citaDto.getFecha(),
+                    citaDto.getHora(),
+                    citaDto.getCustomer()
+            );
+
+            view.display(cita);
+        } else {
+            view.displayErrorMessage("Cita no encontrada");
+        }
         return null;
-          
+    
+    }
+    @Override
+    public List<Cita> readAll() {
+    CitaDaoBD dao = new CitaDaoBD();
+    ArrayList<CitaDTO> lista = dao.readAll();
+    if (lista != null) {
+            view.DisplayAll(lista);
+    }
+       return null;
+    
     }
 
     @Override

@@ -1,34 +1,21 @@
 package PersonaDTO;
 
-
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
-/**
- *
- * @author abiga
- */
-public class DtoCustomer extends PersonaDTO{
-    private boolean active;
-    private boolean desactive;
+public class DtoCustomer extends PersonaDTO {
     private int edad;
 
-
-    public DtoCustomer(String id, String nombre, Date fechaNacimiento, String telefono, String correo) {
-        super(id, nombre, fechaNacimiento, telefono, correo);
-        
+    public DtoCustomer(String cedula, String nombre, Date fechaNacimiento, String telefono, String correo) {
+        super(cedula, nombre, fechaNacimiento, telefono, correo);
+        calcularEdad(fechaNacimiento.toLocalDate());
     }
 
-    public DtoCustomer( String id,  String nombre, Date fechaNacimiento,int edad, String telefono, String correo) {
-        super(id,  nombre, fechaNacimiento, telefono, correo);
+    public DtoCustomer(String cedula, String nombre, Date fechaNacimiento, int edad, String telefono, String correo) {
+        super(cedula, nombre, fechaNacimiento, telefono, correo);
         this.edad = edad;
     }
-
-    
-    
-    
-
-
-    
 
     public int getEdad() {
         return edad;
@@ -38,17 +25,10 @@ public class DtoCustomer extends PersonaDTO{
         this.edad = edad;
     }
 
-    
-
-    
-    public boolean isActive() {
-        return active;
+    private void calcularEdad(LocalDate fechaNacimiento) {
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        this.edad = periodo.getYears();
     }
- 
-    public boolean isDesactive() {
-        return desactive;
-    }
-    
     
 }
-
