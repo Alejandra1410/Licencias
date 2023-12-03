@@ -7,7 +7,7 @@ package Controller.Usuario;
 import Controller.UsuarioLogin;
 import Dao.Usuario.DaoBDUsuario;
 import Model.Usuario.Usuario;
-import PersonaDTO.Usuarios.UsuarioDto;
+import PersonaDTO.UsuarioDto;
 import View.View;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author wendy
  */
-public class UsuarioController implements UsuarioLogin {
+public class UsuarioController implements UsuarioLogin<Usuario> {
 
     private DaoBDUsuario daoUsuario;
     private View view;
@@ -26,8 +26,9 @@ public class UsuarioController implements UsuarioLogin {
     }
 
     @Override
-    public boolean crearUsuario(UsuarioDto usuario) {
-        if (daoUsuario.create(usuario)) {
+    public boolean crearUsuario(Usuario usuario) {
+          UsuarioDto usuarioDto = new UsuarioDto(usuario.getCedula(), usuario.getNombreUsuario(), usuario.getContrasena());
+        if (daoUsuario.create(usuarioDto)) {
             view.displayMessage("Usuario creado correctamente.");
             return true;
         } else {
@@ -35,12 +36,13 @@ public class UsuarioController implements UsuarioLogin {
             return false;
         }
     }
+    
 
     @Override
     public UsuarioDto obtenerUsuario(String nombreUsuario) {
         UsuarioDto usuario = daoUsuario.read(nombreUsuario);
         if (usuario != null) {
-            view.display(UsuarioDto.class); // Asumiendo que tienes un método para mostrar la información del usuario
+            view.display(UsuarioDto.class); 
             return usuario;
         } else {
             view.displayErrorMessage("Usuario no encontrado.");
@@ -69,7 +71,7 @@ public class UsuarioController implements UsuarioLogin {
     @Override
     public boolean iniciarSesion(String nombreUsuario, String contrasena) {
         UsuarioDto usuario = daoUsuario.read(nombreUsuario);
-        if (usuario != null && usuario.getContrasena().equals(contrasena)) { // Debería ser una comparación de hash
+        if (usuario != null && usuario.getContrasena().equals(contrasena)) { 
             view.displayMessage("Inicio de sesión exitoso.");
             return true;
         } else {

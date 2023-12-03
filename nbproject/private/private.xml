@@ -3,9 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/View/Interface/FrmLicencias.java</file>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/Model/Persona.java</file>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/DaoBD/DaoBD.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Controller/Usuario/UsuarioController.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Oficial/Oficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Usuario/Usuario.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/PruebaOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Oficial/DaoBDOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/Interface/UsuariosRegistro.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Controller/Oficial/OficialController.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/CustomerDaoBD.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/Interface/FrmClientes.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Customer/Customer.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Dao/Usuario/DaoBDUsuario.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Persona.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/Interface/FrmLicencias.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/Interface/FrmOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/DtoOficial.java</file>
+            <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/View.java</file>
         </group>
     </open-files>
 </project-private>

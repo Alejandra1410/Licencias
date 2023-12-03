@@ -5,15 +5,15 @@
 package Controller;
 
 import Model.Usuario.Usuario;
-import PersonaDTO.Usuarios.UsuarioDto;
+import PersonaDTO.UsuarioDto;
 import java.util.List;
 
 /**
  *
  * @author wendy
  */
-public interface UsuarioLogin   {
-    boolean crearUsuario(UsuarioDto usuario);
+public interface UsuarioLogin <Class>   {
+    boolean crearUsuario(Usuario usuario);
 
     UsuarioDto obtenerUsuario(String nombreUsuario);
 

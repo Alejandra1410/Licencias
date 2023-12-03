@@ -6,7 +6,7 @@ package Dao.Usuario;
 
 import Dao.Dao;
 import DaoBD.DaoBD;
-import PersonaDTO.Usuarios.UsuarioDto;
+import PersonaDTO.UsuarioDto;
 import java.util.List;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class DaoBDUsuario implements Dao<UsuarioDto> {
             return false;
         }
         DaoBD bd = new DaoBD();
-        bd.createStatement("call UsuarioInsert(?,?,?)");
+        bd.createStatement("call UserInsert(?,?,?)");
         bd.set(1, obj.getCedula());
         bd.set(2, obj.getNombreUsuario());
         bd.set(3, obj.getContrasena());

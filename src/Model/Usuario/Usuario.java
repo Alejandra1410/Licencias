@@ -28,7 +28,7 @@ public class Usuario {
         try {
             this.contrasena = Utilidades.encriptarContrasena(this.contrasena);
         } catch (NoSuchAlgorithmException ex) {
-            System.out.println("No se pudo encriptar la contrasena");
+            System.out.println("No se pudo encriptar la contraseña");
         }
     }
 

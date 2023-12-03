@@ -4,15 +4,24 @@
  */
 package View.Interface;
 
+import Controller.Usuario.UsuarioController;
+import Dao.Dao;
+import Dao.Usuario.DaoBDUsuario;
+import Model.Usuario.Usuario;
+import PersonaDTO.UsuarioDto;
+import View.View;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wendy
  */
-public class UsuariosRegistro extends javax.swing.JInternalFrame {
+public class UsuariosRegistro extends javax.swing.JInternalFrame implements View<Usuario> {
+DaoBDUsuario usuarioDao = new DaoBDUsuario();
+UsuarioController usuarioController = new UsuarioController(usuarioDao, this);
 
-    /**
-     * Creates new form UsuariosRegistro
-     */
+
+
     public UsuariosRegistro() {
         initComponents();
     }
@@ -30,12 +39,14 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtCedulaOficial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtCedulaOficial1 = new javax.swing.JTextField();
+        txtNombreUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
         jLabel1.setText("Registro de Oficiales");
@@ -52,16 +63,21 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Nombre de usuario:");
 
-        txtCedulaOficial1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaOficial1ActionPerformed(evt);
+                txtNombreUsuarioActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setText("Contraseña:");
 
-        jPasswordField1.setText("jPasswordField1");
+        txtContrasena.setText("jPasswordField1");
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\wendy\\Downloads\\4105938-account-card-id-identification-identity-card-profile-user-profile_113929.png")); // NOI18N
 
@@ -69,15 +85,22 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Interface/name_user_3716.png"))); // NOI18N
 
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Interface/register_login_signup_icon_219991.png"))); // NOI18N
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setText("Registrarse o inciar sesión:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -89,7 +112,7 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCedulaOficial1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -97,18 +120,26 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(27, 27, 27)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel8))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel6))
+                    .addComponent(jLabel6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(txtCedulaOficial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -117,17 +148,21 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtCedulaOficial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(28, 28, 28)
+                .addComponent(btnRegistrar)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -137,12 +172,36 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaOficialActionPerformed
 
-    private void txtCedulaOficial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaOficial1ActionPerformed
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCedulaOficial1ActionPerformed
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    String cedula = txtCedulaOficial.getText();
+    String nombreUsuario = txtNombreUsuario.getText();
+    String contrasena = new String(txtContrasena.getPassword());
+    if (!cedula.isEmpty() && !nombreUsuario.isEmpty() && !contrasena.isEmpty()) {
+        Usuario nuevoUsuario = new Usuario(cedula, nombreUsuario, contrasena);
+        nuevoUsuario.encriptarContrasena(); // Asegúrate de encriptar la contraseña
+        boolean success = usuarioController.crearUsuario(nuevoUsuario);
+        if (success) {
+            clear();
+            displayMessage("Usuario creado correctamente.");
+        } else {
+            displayErrorMessage("Error al agregar el usuario.");
+        }
+    } else {
+        displayErrorMessage("Todos los campos son necesarios.");
+    }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -150,8 +209,36 @@ public class UsuariosRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtCedulaOficial;
-    private javax.swing.JTextField txtCedulaOficial1;
+    private javax.swing.JPasswordField txtContrasena;
+    private javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void display(Usuario obj) {
+    }
+
+    @Override
+    public void displayErrorMessage(String message) {
+    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+
+    }
+
+    @Override
+    public void displayMessage(String message) {
+    JOptionPane.showMessageDialog(this, message, "Sucessful", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public boolean displayConfirmMessage(String message) {
+     int option = JOptionPane.showConfirmDialog(this, message, "Confirmación", JOptionPane.YES_NO_OPTION);
+    return option == JOptionPane.YES_OPTION;
+    }
+  public void clear() {
+       txtCedulaOficial.setText("");
+        txtNombreUsuario.setText("");
+        txtContrasena.setText("");
+    }
+
 }
