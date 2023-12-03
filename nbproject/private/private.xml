@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Controller/Usuario/UsuarioController.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Oficial/Oficial.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/Model/Usuario/Usuario.java</file>
@@ -19,6 +20,12 @@
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/Interface/FrmOficial.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/PersonaDTO/DtoOficial.java</file>
             <file>file:/C:/Users/wendy/OneDrive/Escritorio/Documentos/NetBeansProjects/Licencias/src/View/View.java</file>
+=======
+            <file>file:/F:/Licencias/src/View/Interface/FrmClientes.java</file>
+            <file>file:/F:/Licencias/src/View/Interface/FrmCitas.java</file>
+            <file>file:/F:/Licencias/src/Controller/Citas/CitaController.java</file>
+            <file>file:/F:/Licencias/src/View/Interface/FrmLicencias.java</file>
+>>>>>>> 4d544c2796910c2b48ee01d19eb16b3fb1f869af
         </group>
     </open-files>
 </project-private>

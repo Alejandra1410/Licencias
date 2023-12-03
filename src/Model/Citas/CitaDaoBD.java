@@ -1,61 +1,70 @@
 package Model.Citas;
 
-import Dao.Dao;
+import Dao.DaoCRR;
 import DaoBD.DaoBD;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CitaDaoBD implements Dao<CitaDTO> {
+public class CitaDaoBD implements DaoCRR<CitaDTO> {
 
     private DaoBD daoBD;
-
+    private static CitaDaoBD cita;
+  
     public CitaDaoBD() {
         this.daoBD = new DaoBD();
     }
 
+  public static CitaDaoBD getInstance(){
+    if (cita==null) {
+       cita=new CitaDaoBD();
+     }
+    return cita;
+   }
+  
    @Override
    public boolean create(CitaDTO citaDTO) {
-        if (!isFechaCitaValida(citaDTO.getFecha())) {
-            System.out.println("Error: La fecha de la cita debe ser mayor a la fecha actual.");
-            return false;
-        }
-        boolean activo = true;
-        daoBD.createStatement("call CitasInsert(?,?,?,?,?)");
-        daoBD.set(1, citaDTO.getId());
-        daoBD.set(2, citaDTO.getFecha());
-        daoBD.set(3, citaDTO.getHora());
-        daoBD.set(4, citaDTO.getCustomer());
-        daoBD.set(5, activo);
-
-        return daoBD.execute(true);
+    if (!isFechaCitaValida(citaDTO.getFecha())) {
+        System.out.println("Error: La fecha de la cita debe ser mayor a la fecha actual.");
+        return false;
     }
 
+    boolean activo = true;
+    daoBD.createStatement("INSERT INTO citas (FechaCita, Hora, IdClienteFK, Activa  ) VALUES (?, ?, ?, ?)");
+    daoBD.set(1, citaDTO.getFecha());
+    daoBD.set(2, citaDTO.getHora());
+    daoBD.set(3, citaDTO.getCustomer());
+    daoBD.set(4, activo);
 
-      @Override
-      public CitaDTO read(String id) {
-        try {
-            DaoBD bd = new DaoBD();
+    return daoBD.execute(false);
+}
 
-            bd.createStatement("call CitaRead(?)");
-            bd.set(1, id);
-            bd.execute(true);
 
-                if (bd.getData().next()) {
-                    int idcita = Integer.parseInt(id);
-                Date fecha = bd.getData().getDate("FechaCita");
-                String hora = bd.getData().getString("Hora");
-                String idcliente = bd.getData().getString("IdClienteFK");
+    @Override
+public CitaDTO read(String id) {
+    try {
+        DaoBD bd = new DaoBD();
 
-                return new CitaDTO(idcita,fecha, hora, idcliente);
-            } else {
-                return null;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+        bd.createStatement("call CitaRead(?)");
+        bd.set(1, id);
+        boolean executionResult = bd.execute(true);
+
+        if (executionResult && bd.getData() != null && bd.getData().next()) {
+            int idcita = Integer.parseInt(id);
+            Date fecha = bd.getData().getDate("FechaCita");
+            String hora = bd.getData().getString("Hora");
+            String idcliente = bd.getData().getString("IdClienteFK");
+
+            return new CitaDTO(idcita, fecha, hora, idcliente);
+        } else {
             return null;
         }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        return null;
+    }
 }
+
 
 
     @Override
@@ -84,26 +93,8 @@ public class CitaDaoBD implements Dao<CitaDTO> {
         return List;
     }
 
-    @Override
-    public boolean update(CitaDTO citaDTO) {
-//        DaoBD bd = new DaoBD();
-//        bd.createStatement("call CitaUpdate(?,?,?,?)");
-//        bd.set(1, citaDTO.getId());
-//        bd.set(2, citaDTO.getFecha());   BORRARRRR
-//        bd.set(3, citaDTO.getHora());
-//        bd.set(4, citaDTO.getCustomer());
-//        return daoBD.execute(false);
-        return false;
-//     
-    }
-
-    @Override
-    public boolean delete(CitaDTO citaDTO) {
-        String sql = "{CALL crear_cita(?, ?, ?)}";
-        daoBD.createStatement(sql);
-        daoBD.set(1, citaDTO.getId());
-        return daoBD.execute(false);
-    }
+    
+    
 
     public boolean clienteTieneCita(String idCliente) {
     DaoBD bd = new DaoBD();
@@ -164,9 +155,5 @@ public boolean citasEnFechaYHora(Date fecha, String hora) {
         // Verificar si la fecha de la cita es mayor a la fecha actual
         return fechaCita.after(fechaActual);
     }
-
-
       
-
-
 }

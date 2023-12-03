@@ -6,11 +6,12 @@ package Controller.Citas;
 
 
 import Controller.Controller;
+import Controller.ControllerCRR;
 import Controller.Customer.CustomerController;
 import Model.Citas.Cita;
 import Model.Citas.CitaDTO;
 import Model.Citas.CitaDaoBD;
-import Model.Customer.Customer;
+import Model.Customer.CustomerDaoBD;
 import View.Interface.FrmCitas;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,43 +20,52 @@ import java.util.List;
  *
  * @author ekard
  */
-public class CitaController implements Controller<Cita> {
+public class CitaController implements ControllerCRR<Cita> {
 
     private FrmCitas view;
     private CustomerController customercontroller;
+    private static CitaController instance;
 
     public CitaController(FrmCitas view) {
         this.view = view;
     }
+   
+   
+
     
-    @Override
-public boolean create(Cita cita) {
+   @Override
+    public boolean create(Cita cita) {
     CitaDaoBD dao = new CitaDaoBD();
 
+    
     if (!dao.isFechaCitaValida(cita.getFecha())) {
-        view.displayErrorMessage("Error: La fecha de la cita debe ser mayor a la fecha actual.");
+        view.displayErrorMessage(" La fecha de la cita debe ser mayor a la fecha actual.");
         return false;
     }
 
-    // Verificar reglas de negocio antes de crear la cita
     if (dao.clienteTieneCita(cita.getCustomer())) {
         view.displayErrorMessage("El cliente ya tiene una cita activa.");
-        return false; //FUNCIONA
+        return false; 
+    }
+    
+    if (!verificarExistenciaCliente(cita.getCustomer())) {
+        return false;
     }
 
     if (dao.citasEnFechaYHora(cita.getFecha(), cita.getHora())) {
         view.displayErrorMessage("Ya existen cuatro citas registradas en la misma fecha y hora.");
-        return false;
+        return false; 
+    
     }
-
-    // Convertir la Cita a CitaDTO para usar en el método create del Dao
+    
     CitaDTO dto = new CitaDTO(
-            cita.getFecha(),
-            cita.getHora(),
-            cita.getCustomer()
+        cita.getId(),
+        cita.getFecha(),
+        cita.getHora(),
+        cita.getCustomer()
+         
     );
 
-    // Llama al método correspondiente en tu Dao para agregar la cita
     boolean success = dao.create(dto);
 
     if (success) {
@@ -67,6 +77,8 @@ public boolean create(Cita cita) {
 
     return success;
 }
+
+
 
 
     @Override
@@ -100,16 +112,16 @@ public boolean create(Cita cita) {
     
     }
 
-    @Override
-    public boolean update(Cita obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean delete(Cita obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
+   private boolean verificarExistenciaCliente(String idCliente) {
+    CustomerDaoBD dao = new CustomerDaoBD();
+
+    if (dao.read(idCliente) == null) {
+        view.displayErrorMessage("El Id del cliente no existe.");
+        return false;
+    }
+    return true;
+}
     
            
 }

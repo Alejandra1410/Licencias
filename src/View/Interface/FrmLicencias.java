@@ -15,6 +15,7 @@ public class FrmLicencias extends javax.swing.JFrame {
      */
     public FrmLicencias() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -27,6 +28,7 @@ public class FrmLicencias extends javax.swing.JFrame {
     private void initComponents() {
 
         jpane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnCitas = new javax.swing.JMenu();
         btnAgendar = new javax.swing.JMenuItem();
@@ -37,16 +39,24 @@ public class FrmLicencias extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Serif", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Icons/landscape-macbook-1920x1080-10760.jpg"))); // NOI18N
+
+        jpane.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jpaneLayout = new javax.swing.GroupLayout(jpane);
         jpane.setLayout(jpaneLayout);
         jpaneLayout.setHorizontalGroup(
             jpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, Short.MAX_VALUE)
         );
         jpaneLayout.setVerticalGroup(
             jpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setOpaque(true);
 
         btnCitas.setText("Citas");
 
@@ -152,7 +162,11 @@ public class FrmLicencias extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnAgendar;
     private javax.swing.JMenuItem btnAgendarClientes;
     private javax.swing.JMenu btnCitas;
+<<<<<<< HEAD
     private javax.swing.JMenu jMenu1;
+=======
+    private javax.swing.JLabel jLabel1;
+>>>>>>> 4d544c2796910c2b48ee01d19eb16b3fb1f869af
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
