@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/View/Interface/FrmLicencias.java</file>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/Model/Persona.java</file>
-            <file>file:/C:/Users/abiga/OneDrive/Escritorio/_UTN_/Programacion/NetBeansProjects/Licencias_1/src/DaoBD/DaoBD.java</file>
+            <file>file:/F:/Licencias/src/View/Interface/FrmClientes.java</file>
+            <file>file:/F:/Licencias/src/View/Interface/FrmCitas.java</file>
+            <file>file:/F:/Licencias/src/Controller/Citas/CitaController.java</file>
+            <file>file:/F:/Licencias/src/View/Interface/FrmLicencias.java</file>
         </group>
     </open-files>
 </project-private>

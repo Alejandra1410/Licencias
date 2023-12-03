@@ -18,7 +18,7 @@ public class Cita {
     private boolean activa;
 
     public Cita( Date fecha, String hora, String Customer) {
-        this.id = 0;
+       
         this.fecha = fecha;
         this.hora = hora;
         this.Customer = Customer;

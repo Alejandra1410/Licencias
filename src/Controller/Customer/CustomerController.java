@@ -8,8 +8,10 @@ import View.Interface.FrmClientes;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+/**
+ *
+ * @author abiga
+ */
 
 public class CustomerController implements Controller<Customer> {
 
@@ -23,16 +25,10 @@ public class CustomerController implements Controller<Customer> {
     @Override
 public boolean create(Customer customer) {
     CustomerDaoBD dao = new CustomerDaoBD();
-
-    // Calcular la edad usando el método en el modelo Customer
-    int edad = customer.getEdad();
-
-    // Crear el DtoCustomer con la edad calculada
     DtoCustomer customerdto = new DtoCustomer(
         customer.getCedula(),
         customer.getNombre(),
         customer.getFechaNacimiento(),
-        edad,
         customer.getTelefono(),
         customer.getCorreo()
     );
@@ -101,8 +97,8 @@ public boolean create(Customer customer) {
         if (exito) {
             viewC.display(obj);
             viewC.displayMessage("Cita modificada correctamente");
+            readAll();
         } else {
-            viewC.displayErrorMessage("Error al modificar la cita");
         }
        return false;
     }
